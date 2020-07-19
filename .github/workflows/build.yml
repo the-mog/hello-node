@@ -7,6 +7,9 @@ on:
     - "*"
     - "!README.md"
     - "!build.rb"
+    # Publish `v1.2.3` tags as releases.
+    tags:
+    - v*
   schedule:
     # As well as running when we make changes we should run at least
     # every week in order to pick up new parent images and new versions
@@ -24,6 +27,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         add_git_labels: true
-        repository: the-mog/hello-node
+        repository: nuttsmare/node-hello-web
         tag_with_ref: true
         push: ${{ startsWith(github.ref, 'refs/tags/') }}
